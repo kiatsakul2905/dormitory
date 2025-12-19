@@ -1,0 +1,119 @@
+:root{
+  /* Light theme (white background) */
+  --bg-1: #ffffff; /* main page background */
+  --bg-2: #f7fafc; /* subtle secondary */
+  --card-bg: rgba(15,23,36,0.03);
+  --accent: #0d6efd; /* primary blue accent */
+  --muted: #6b7280; /* muted text */
+  --success: #0ea5a4;
+  --footer-height: 150px;
+  --nav-height: 64px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;}
+body{
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  margin:0;
+  /* white background with a very subtle textured pattern so it doesn't feel empty */
+  background-color: var(--bg-1);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(0,0,0,0.02) 0.5px, transparent 0.5px),
+    repeating-linear-gradient(45deg, rgba(0,0,0,0.01) 0 1px, transparent 1px 8px),
+    linear-gradient(180deg, var(--bg-1), var(--bg-2));
+  background-size: 12px 12px, 8px 8px, auto;
+  color:#0b1726; /* dark text for light background */
+  transition:background-color .3s ease, color .2s ease;
+  padding-top:calc(var(--nav-height) + 8px);
+}
+
+/* Reserve space for the fixed navbar and ensure page content doesn't butt against footer */
+.page-content{padding-top:0.25rem;padding-bottom:3.5rem;min-height:calc(100vh - var(--footer-height) - var(--nav-height));}
+
+/* Navbar tweaks */
+.navbar{padding:.55rem 1rem}
+.navbar .navbar-brand{font-size:1.05rem}
+
+/* Footer styling */
+footer.bg-dark{
+  padding-top:2rem; padding-bottom:1.5rem; border-top:1px solid rgba(255,255,255,0.04);
+}
+footer .container{display:flex;flex-wrap:wrap;gap:1rem;align-items:flex-start}
+footer h5{color:#e6f0ff}
+footer p{color:rgba(255,255,255,0.85)}
+footer .btn{font-size:0.9rem}
+footer .text-center{width:100%;margin-top:0.6rem}
+
+/* Make footer columns more compact on small screens */
+@media(min-width:768px){
+  footer .container{align-items:center}
+}
+
+/* Mobile-specific improvements */
+@media (max-width:576px){
+  :root{ --nav-height: 56px; }
+  .navbar .btn{padding:.45rem .6rem;font-size:0.95rem}
+  .navbar .form-select{min-width:88px}
+  .page-content{padding-left:0.75rem;padding-right:0.75rem;padding-bottom:2.5rem}
+  footer .container{flex-direction:column;align-items:stretch}
+  footer .text-center{margin-top:1rem}
+  .card-img-top{height:180px}
+}
+
+.container{transition:transform .45s cubic-bezier(.2,.9,.2,1),opacity .35s ease}
+
+/* Navbar theme - light */
+.navbar{
+  background: rgba(255,255,255,0.95) !important;
+  box-shadow: 0 1px 0 rgba(15,23,36,0.04);
+  border-bottom: 1px solid rgba(15,23,36,0.06);
+}
+.navbar .navbar-brand{color:var(--accent);font-weight:600}
+.navbar .nav-link, .navbar .navbar-text{color:#24303b}
+.navbar .btn{transition:transform .12s ease}
+.navbar .btn:active{transform:translateY(1px)}
+
+/* Cards and UI */
+.card, .card-body, .card h5{background:transparent}
+.card{background:linear-gradient(180deg, rgba(2,6,23,0.02), rgba(2,6,23,0.01)); border:1px solid rgba(15,23,36,0.06)}
+
+.btn-primary{background:linear-gradient(90deg,var(--accent), #0b5ed7); border: none}
+.btn-outline-primary{color:var(--accent); border-color: rgba(15,23,36,0.08)}
+.btn-outline-light{color:#fff; border-color: rgba(0,0,0,0.06)}
+
+.text-muted{color:var(--muted);opacity:0.95}
+
+/* Ensure general readable text color on darker backgrounds */
+p, h1, h2, h3, h4, h5, h6, li, a, span, label {
+  color: inherit;
+}
+
+/* Footer */
+footer.bg-dark{background:linear-gradient(180deg, rgba(2,6,23,0.95), rgba(4,12,30,0.95)); color: #cfe7ff}
+
+
+/* Animations */
+.fade-in{opacity:0; transform:translateY(8px); transition:opacity .5s ease, transform .5s cubic-bezier(.2,.9,.2,1)}
+.slide-up{opacity:0; transform:translateY(18px); transition:opacity .55s ease, transform .55s cubic-bezier(.2,.9,.2,1)}
+.staggered > *{opacity:0; transform:translateY(10px)}
+
+body.theme-loaded .fade-in,
+body.theme-loaded .slide-up{opacity:1; transform:none}
+
+/* stagger helper */
+.theme-stagger .staggered > *{animation:staggerIn .6s forwards;}
+@keyframes staggerIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* small UI touches */
+a {color:var(--accent);}
+img{max-width:100%;height:auto}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .fade-in, .slide-up, .staggered > * {transition:none; animation:none}
+}
+
+/* Responsive tweak for navbar spacing */
+@media (max-width:576px){
+  body{font-size:14px}
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <script src="js/theme.js" defer></script>
+  <script src="js/lang.js" defer></script>
+  <script src="js/translations.js" defer></script>
+</head>
+<body>
+
+  <!-- Nav placeholder -->
+  <div id="nav-placeholder"></div>
+  <script>
+    (async function(){
+      try{
+        const res = await fetch('nav.html');
+        if(res.ok) document.getElementById('nav-placeholder').innerHTML = await res.text();
+        if(!document.getElementById('nav-init')){ const sn=document.createElement('script'); sn.id='nav-init'; sn.src='js/nav-init.js'; document.body.appendChild(sn); }
+        const id='auth-module'; if(!document.getElementById(id)){const s=document.createElement('script'); s.type='module'; s.id=id; s.src='js/auth.js'; document.body.appendChild(s);} 
+        if (window.translatePage) window.translatePage();
+      }catch(e){ console.warn('Failed to load nav', e); }
+    })();
+  </script>
+
+  <main class="page-content container mt-5">
+    <h3 data-translate="register">สมัครสมาชิก</h3>
+    <div class="mb-3">
+      <input id="email" type="email" class="form-control" data-placeholder="emailPlaceholder" placeholder="Email (@ku.th เท่านั้น)">
+    </div>
+
+    <div class="mb-3 position-relative">
+      <input id="password" type="password" class="form-control" data-placeholder="password" placeholder="Password">
+      <i id="togglePass" class="fa fa-eye position-absolute top-50 end-0 translate-middle-y me-3" style="cursor:pointer;"></i>
+    </div>
+
+    <button id="registerBtn" class="btn btn-primary w-100 mb-2" data-translate="registerBtn">สมัครสมาชิก</button>
+    <button id="googleBtn" class="btn btn-danger w-100 mb-2"><i class="fab fa-google me-2"></i> <span data-translate="registerGoogle">Register with Google</span></button>
+
+    <p><span data-translate="hasAccount">มีบัญชีแล้ว?</span> <a href="login.html" data-translate="loginLink">เข้าสู่ระบบ</a></p>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-light pt-4 mt-5">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-4 mb-3">
+          <h5 data-translate="aboutUs">เกี่ยวกับเรา</h5>
+          <p data-translate="aboutText">ระบบจัดการข้อมูลหอพัก มหาวิทยาลัย สกลนคร</p>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <h5 data-translate="contactAdmin">ติดต่อแอดมิน</h5>
+          <div class="d-flex flex-column gap-2">
+            <a href="tel:0639730076" class="btn btn-outline-light btn-sm d-flex align-items-center">
+              <i class="fa fa-phone me-2"></i> โทรศัพท์
+            </a>
+            <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=DmwnWtDmCNSZBcwNrkqJbHHjsHBMvPPdChbtvDPDqqhRmRzCjFhDTFXmSQQgCxbbCWtKqGZLwncL" class="btn btn-outline-light btn-sm d-flex align-items-center">
+              <i class="fa fa-envelope me-2"></i> Email
+            </a>
+            <a href="https://line.me/ti/p/xxxxxxxx" target="_blank" class="btn btn-outline-success btn-sm d-flex align-items-center">
+              <i class="fab fa-line me-2"></i> Line
+            </a>
+            <a href="https://web.facebook.com/kiatsakul.paiyasen" target="_blank" class="btn btn-primary btn-sm d-flex align-items-center">
+              <i class="fab fa-facebook me-2"></i> Facebook
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <h5 data-translate="location">ที่อยู่</h5>
+          <p data-translate="address">มหาวิทยาลัยสกลนคร<br>อำเภอเมือง จังหวัดสกลนคร 47000</p>
+          <a href="https://www.google.com/maps" target="_blank" class="btn btn-outline-light btn-sm" data-translate="viewMap">ดูแผนที่</a>
+        </div>
+
+      </div>
+
+      <hr class="bg-light">
+
+      <div class="text-center pb-3" data-translate="copyright">&copy; 2025 KU Dormitory. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/auth.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
