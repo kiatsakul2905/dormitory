@@ -94,7 +94,7 @@ Firebase API Key ใช้งานเฉพาะฝั่ง Client และ�
 ป้องกันการเข้าถึงและแก้ไขข้อมูลโดยไม่ได้รับอนุญาต
 
 🚀 Installation & Setup
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/kiatsakul2905/dormitory.git
 cd your-repo-name
 
 
