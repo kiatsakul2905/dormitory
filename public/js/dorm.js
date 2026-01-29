@@ -29,10 +29,10 @@ window.addEventListener("DOMContentLoaded", async () => {
     const fmt = (n) => n == null ? '-' : n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     if (a == null && b == null) return '-';
     if (a != null && b != null){
-      if (a === b) return `${fmt(a)} บาท/เดือน`;
-      return `${fmt(a)} - ${fmt(b)} บาท/เดือน`;
+      if (a === b) return `${fmt(a)} บาท/เทอม`;
+      return `${fmt(a)} - ${fmt(b)} บาท/เทอม`;
     }
-    return `${fmt(a ?? b)} บาท/เดือน`;
+    return `${fmt(a ?? b)} บาท/เทอม`;
   }
 
   document.getElementById("dorm-price").innerText = fmtPrice(d.price_min, d.price_max);
